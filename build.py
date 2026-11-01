@@ -50,25 +50,28 @@ for paper in p['papers']:
     role = 'corresponding' if paper['id'] in corresponding_ids else 'first' if is_first_author(paper) else 'coauthor'
     news_events.append((paper, event, role))
 
-role_labels = {'first': ('First Author', '第一作者'), 'coauthor': ('Co-author', '合著作者'), 'corresponding': ('Corresponding Author', '通讯作者')}
+news_subjects = {'first': ('One first-authored paper', '一篇第一作者论文'), 'coauthor': ('One co-authored paper', '一篇合著论文'), 'corresponding': ('One paper (corresponding author)', '一篇通讯作者论文')}
 news_rows = []
 for announcement in news_config.get('announcements', []):
     stamp = announcement['date']
     date.fromisoformat(stamp)
     message = bi(e(announcement['en']), e(announcement['zh']))
+    if announcement.get('venue'):
+        venue_text = e(announcement['venue'])
+        message = message.replace(venue_text, f'<strong>{venue_text}</strong>')
     row = f'<li data-news-id="{e(announcement["id"])}" data-news-role="{e(announcement["role"])}"><time datetime="{e(stamp)}">{e(stamp.replace("-", "."))}</time><div>{message}</div></li>'
     news_rows.append((stamp, row))
 for paper, event, role in news_events:
     url = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper['scholar']
-    title = paper.get('short', paper['title'].rstrip('.'))
-    link = f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer" title="{e(paper["title"])}">{e(title)}</a>'
-    venue = f'<strong>{e(event["venue"])}</strong>'
-    role_en, role_zh = role_labels[role]
-    role_description = ('the ' if role == 'first' else 'a ') + role_en.lower()
+    subject_en, subject_zh = news_subjects[role]
+    def news_link(label):
+        return f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer" title="{e(paper["title"])}">{e(label)}</a>'
+    venue_name = {'ISPRS Journal of Photogrammetry and Remote Sensing': 'ISPRS J PRS', 'IEEE Signal Processing Letters': 'IEEE SPL'}.get(event['venue'], event['venue'])
+    venue = f'<strong>{e(venue_name)}</strong>'
     if paper['category'] == 'preprint':
-        message = bi(f'📝 {link} is available as a preprint on {venue}. I am <strong>{role_description}</strong>.', f'📝 {link} 预印本发布于 {venue}，本人为<strong>{role_zh}</strong>。')
+        message = bi(f'📄 {news_link(subject_en)} is available as a preprint on {venue}.', f'📄 {news_link(subject_zh)}预印本发布于 {venue}。')
     else:
-        message = bi(f'🎉 {link} was published in {venue}. I am <strong>{role_description}</strong>.', f'🎉 {link} 发表于 {venue}，本人为<strong>{role_zh}</strong>。')
+        message = bi(f'📄 {news_link(subject_en)} was published in {venue}.', f'📄 {news_link(subject_zh)}发表于 {venue}。')
     news_rows.append((event['date'], f'<li data-paper-id="{e(paper["id"])}" data-news-role="{role}"><time datetime="{e(event["date"])}">{e(event["date"].replace("-", "."))}</time><div>{message}</div></li>'))
 # Announcements and publications share one timeline, limited to the latest five.
 news = ['<ul class="news-list">'] + [row for _, row in sorted(news_rows, key=lambda item: item[0], reverse=True)[:5]] + ['</ul>']
