@@ -1,0 +1,10 @@
+{
+  "category_order": ["journal", "conference", "preprint"],
+  "journal_venue_tiers": [
+    ["ISPRS Journal of Photogrammetry and Remote Sensing"],
+    ["IEEE Transactions on Geoscience and Remote Sensing"],
+    ["IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing"],
+    ["IEEE Signal Processing Letters"]
+  ],
+  "first_author_aliases": ["Yu Wan", "Y Wan", "Wan Yu", "W Yu", "万宇"]
+}

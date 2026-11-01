@@ -1,0 +1,6 @@
+__pycache__/
+_site/
+reference-template/
+reference-git-residue/
+*.log
+tmp/
