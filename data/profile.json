@@ -196,6 +196,23 @@
       "image_caption": "Fig. 5. Result from our registration algorithm.",
       "image_source": "https://ope.lightpublishing.cn/cn/article/doi/10.37188/OPE.20253304.0579",
       "doi": "10.37188/OPE.20253304.0579"
+    },
+    {
+      "id": "paper-13",
+      "title": "An Asymmetric Multi-Task Framework with Spatial Alignment and Gaussian Soft Detection-Oriented Fusion for Visible-Infrared Object Detection",
+      "authors": "Yu Wan, Jie Li, Liupeng Lin, Yiliang Li, Yuzeng Chen, Zaiyan Zhang, Qiangqiang Yuan, Liangpei Zhang",
+      "venue": "IEEE Transactions on Geoscience and Remote Sensing, Early Access, 2026",
+      "year": "2026",
+      "scholar": "https://ieeexplore.ieee.org/document/11775854/",
+      "category": "journal",
+      "selected": true,
+      "short": "VID-AMTF",
+      "image": "publications/vid-amtf.webp",
+      "image_full": "publications/full/vid-amtf.webp",
+      "image_caption": "Overall framework of VID-AMTF: asymmetric visible-infrared feature extraction, spatial alignment, and detection-oriented fusion.",
+      "image_source": "https://github.com/KIKYOUWY/VID-AMTF/blob/main/figures/vid_amtf_framework.png",
+      "code": "https://github.com/KIKYOUWY/VID-AMTF",
+      "doi": "10.1109/TGRS.2026.3750106"
     }
   ]
 }

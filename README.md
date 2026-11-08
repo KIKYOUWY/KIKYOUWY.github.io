@@ -1,6 +1,6 @@
 # Yu Wan · 万宇 — 个人学术主页
 
-个人介绍、研究方向、研究动态、12 篇论文、开源项目与联系方式。样式参考 zzaiyan.github.io：白底学术排版、淡彩导航栏、左侧头像与个人资料、右侧简介、蓝色论文标题与图文论文卡片，使用同款 Cabin 字体。支持中英文、深浅色、论文筛选和搜索、BibTeX 复制与下载，以及手机访问。
+个人介绍、研究方向、研究动态、13 篇论文、开源项目与联系方式。样式参考 zzaiyan.github.io：白底学术排版、淡彩导航栏、左侧头像与个人资料、右侧简介、蓝色论文标题与图文论文卡片，使用同款 Cabin 字体。支持中英文、深浅色、论文筛选和搜索、BibTeX 复制与下载，以及手机访问。
 
 ## 本地预览
 
@@ -21,7 +21,7 @@ python -m http.server 8000
 - `template.html`：简介、研究方向、项目、统计展示及页面结构。
 - `assets/style.css`：页面样式与响应式布局。
 - `assets/app.js`：语言、主题、筛选、引用与论文大图查看交互。
-- `assets/publications/`：11 篇论文的卡片预览图，`full/` 保存完整尺寸图片。
+- `assets/publications/`：12 篇论文的卡片预览图，`full/` 保存完整尺寸图片。
 - `data/figure-sources.json`：逐篇记录图号、来源、尺寸与提取方式；按要求，全色锐化论文不配图。
 - `assets/portrait.jpg`：来自 Google Scholar 的公开头像，可替换。
 
@@ -48,3 +48,5 @@ python -m http.server 8000
 - 未填入未核实的学位、入学年份、导师关系、奖项与实习信息。
 
 `reference-template` 是原参考项目的本地副本，不参与构建或部署。
+
+VID-AMTF: IEEE TGRS Early Access, 2026, DOI 10.1109/TGRS.2026.3750106. Metadata and full author list verified against Crossref; framework image sourced from the official VID-AMTF repository. The existing November 1 acceptance News links to this article; no unverified online publication day is added.

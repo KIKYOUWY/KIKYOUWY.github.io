@@ -59,6 +59,8 @@ for announcement in news_config.get('announcements', []):
     if announcement.get('venue'):
         venue_text = e(announcement['venue'])
         message = message.replace(venue_text, f'<strong>{venue_text}</strong>')
+    if announcement.get('url'):
+        message = f'<a href="{e(announcement["url"])}" target="_blank" rel="noopener noreferrer">{message}</a>'
     row = f'<li data-news-id="{e(announcement["id"])}" data-news-role="{e(announcement["role"])}"><time datetime="{e(stamp)}">{e(stamp.replace("-", "."))}</time><div>{message}</div></li>'
     news_rows.append((stamp, row))
 for paper, event, role in news_events:
@@ -84,11 +86,11 @@ for paper in p['papers']:
         last_category = paper['category']
         cards.append(f'<h3 class="publication-group" data-group="{last_category}">{bi(*category_names[last_category])}</h3>')
     authors = e(paper['authors'])
-    authors = re.sub(r'(?<!\w)(Y Wan|Y WAN|W Yu|万宇)(?!\w)', r'<strong>\1</strong>', authors)
+    authors = re.sub(r'(?<!\w)(Yu Wan|Y Wan|Y WAN|W Yu|万宇)(?!\w)', r'<strong>\1</strong>', authors)
     url = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper['scholar']
     venue = paper['venue']
     badge = ('ISPRS J PRS' if venue.startswith('ISPRS Journal') else
-             'IEEE TGRS' if 'Geoscience and Remote Sensing 63' in venue else
+             'IEEE TGRS' if venue.startswith('IEEE Transactions on Geoscience and Remote Sensing') else
              'IEEE JSTARS' if 'Selected Topics' in venue else
              'IEEE SPL' if 'Signal Processing Letters' in venue else
              'IGARSS' if 'IGARSS' in venue else

@@ -7,7 +7,9 @@
       "en": "📄 One first-authored paper was accepted by IEEE TGRS.",
       "zh": "📄 一篇第一作者论文被 IEEE TGRS 接收。",
       "venue": "IEEE TGRS",
-      "source": "Acceptance and authorship confirmed by Yu Wan; announcement dated November 1, 2026. The exact acceptance date and paper title are unspecified."
+      "source": "Official VID-AMTF repository confirms acceptance on 2026-11-01. Crossref confirms IEEE article 11775854 and DOI 10.1109/TGRS.2026.3750106; publication metadata provides year 2026 only. Existing acceptance announcement retained without duplicate publication news.",
+      "url": "https://ieeexplore.ieee.org/document/11775854/",
+      "paper_id": "paper-13"
     }
   ],
   "corresponding_author_ids": [

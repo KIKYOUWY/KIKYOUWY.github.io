@@ -135,5 +135,17 @@
     "paper_id": "paper-3",
     "status": "omitted_by_user",
     "note": "User requested leaving this paper without a figure."
+  },
+  {
+    "paper_id": "paper-13",
+    "title": "An Asymmetric Multi-Task Framework with Spatial Alignment and Gaussian Soft Detection-Oriented Fusion for Visible-Infrared Object Detection",
+    "figure": "Overall framework of VID-AMTF",
+    "source": "https://github.com/KIKYOUWY/VID-AMTF/blob/main/figures/vid_amtf_framework.png",
+    "note": "Official project framework image, complete aspect ratio preserved; composited on white and converted to WebP.",
+    "native_width": 1800,
+    "native_height": 1726,
+    "preview_width": 1200,
+    "preview_height": 1151,
+    "full_image": "publications/full/vid-amtf.webp"
   }
 ]
