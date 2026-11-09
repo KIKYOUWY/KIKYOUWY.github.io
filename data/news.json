@@ -1,6 +1,15 @@
 {
   "announcements": [
     {
+      "id": "gsis-acceptance-2026-11-09",
+      "date": "2026-11-09",
+      "role": "first",
+      "en": "📄 One first-authored paper was accepted by GSIS.",
+      "zh": "📄 一篇第一作者论文被 GSIS 接收。",
+      "venue": "GSIS",
+      "source": "Acceptance on November 9, 2026 and first authorship confirmed by Yu Wan. Paper title and URL not yet supplied."
+    },
+    {
       "id": "tgrs-acceptance-2026-11",
       "date": "2026-11-01",
       "role": "first",
