@@ -29,6 +29,12 @@ python -m http.server 8000
 
 ## 发布到 GitHub Pages
 
+### VisitorTrace 访客地图
+
+已准备与参考主页相同的 VisitorTrace 接入，位置在页尾，移动端自动改为单列。`data/visitor-trace.json` 中填写自己服务的 HTTPS `base_url`、`site_id`，将 `enabled` 改为 `true`，再运行 `python build.py` 并推送即可启用。未配置时不显示空控件、不发送统计请求。使用官方一体化 widget.js 同时显示地图与记录访问，不额外加载 tracker，避免重复计数。
+
+VisitorTrace 后端需要单独部署，GitHub Pages 仅托管静态页面。按 [官方部署指南](https://github.com/zzaiyan/VisitorTrace/blob/main/docs/deployment.md) 启动服务，在管理后台为 `https://kikyouwy.github.io` 创建独立站点并配置 Allowed Origins、GeoIP 和公开地图。不要使用参考主页的站点 ID，否则会混入他人统计。这里只填写公开服务地址和站点 ID，管理员密码不应提交到仓库。
+
 1. 在你自己的 GitHub 账号创建 `KIKYOUWY.github.io` 仓库（账号以实际使用的为准）。
 2. 将本文件夹中的网站文件上传至 `main` 分支；无需上传 `reference-template` 和 `reference-git-residue`。
 3. 在仓库 **Settings → Pages → Source** 中选择 **GitHub Actions**。

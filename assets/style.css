@@ -110,6 +110,14 @@ main.shell{padding-top:48px}
 .contact p{font-size:14px;overflow-wrap:anywhere}
 .footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:40px;padding-block:22px 32px;font-size:11px;color:var(--muted)}
 .footer a{color:var(--muted)}
+.visitor-trace{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:center;gap:28px;margin-top:40px;border-top:1px solid var(--line);padding-top:24px}
+.visitor-map{min-width:0}
+.visitor-map h2{font-size:16px;margin:0 0 12px;color:var(--heading)}
+.visitor-map iframe,.visitor-map img{max-width:100%;border-radius:10px}
+.visitor-note{font-size:13px;color:var(--muted)}
+.visitor-note p{margin:0 0 6px}
+.visitor-note a{font-size:11px}
+@media(max-width:740px){.visitor-trace{grid-template-columns:1fr;gap:12px}.visitor-note{text-align:center}}
 dialog{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;width:min(680px,calc(100% - 32px));padding:25px;max-height:85vh;overflow:auto}
 dialog::backdrop{background:#15203780;backdrop-filter:blur(3px)}
 .dialog-heading{display:flex;align-items:center;justify-content:space-between}

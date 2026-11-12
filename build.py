@@ -4,6 +4,7 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit, quote
 
 ROOT = Path(__file__).resolve().parent
 p = json.loads((ROOT / 'data/profile.json').read_text(encoding='utf-8'))
@@ -110,8 +111,26 @@ for paper in p['papers']:
       {figure}<div class="paper-body"><div class="paper-meta"><span>{e(paper.get('short', paper['category'].title()))}</span><span>{e(paper['year'])} / {e(paper['category'].upper())}</span></div>
       <h3><a href="{e(url)}" target="_blank" rel="noopener noreferrer">{e(paper['title'])}</a></h3><p class="authors">{authors}</p><p class="venue">{e(paper['venue'])}</p><div class="paper-links">{links}</div></div></article>''')
 
+visitor_config = json.loads((ROOT / 'data/visitor-trace.json').read_text(encoding='utf-8'))
+visitor_widget = ''
+visitor_tracker = ''
+if visitor_config['enabled']:
+    base_url = visitor_config['base_url'].strip().rstrip('/')
+    site_id = visitor_config['site_id'].strip()
+    parsed_url = urlsplit(base_url)
+    if (parsed_url.scheme != 'https' or not parsed_url.hostname or parsed_url.username
+            or parsed_url.password or parsed_url.query or parsed_url.fragment or not site_id):
+        raise ValueError('VisitorTrace requires an HTTPS service base URL and a non-empty site_id.')
+    widget_url = e(f'{base_url}/embed/widget.js?site_id={quote(site_id, safe="")}')
+    visitor_widget = f'''<section class="shell visitor-trace" id="visitors" aria-labelledby="visitor-heading">
+      <div class="visitor-map"><h2 id="visitor-heading">{bi('Visitor Map', '访客足迹')}</h2><script async src="{widget_url}"></script></div>
+      <div class="visitor-note"><p>{bi('Thank you for visiting!', '感谢你的来访！')}</p><a href="https://github.com/zzaiyan/VisitorTrace" target="_blank" rel="noopener noreferrer">Powered by VisitorTrace ↗</a></div>
+    </section>'''
+
 template = (ROOT / 'template.html').read_text(encoding='utf-8')
 replacements = {
+    '{{VISITOR_WIDGET}}': visitor_widget,
+    '{{VISITOR_TRACKER}}': visitor_tracker,
     '{{NEWS}}': '\n'.join(news),
     '{{PAPERS}}': '\n'.join(cards),
     '{{EMAIL}}': e(p['email']),
